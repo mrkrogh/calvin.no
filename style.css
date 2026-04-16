@@ -31,15 +31,7 @@
   --link: #1a1a1a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #e8e4dc;
-    --text-muted: #999;
-    --border: #4a4642;
-    --bg: #161412;
-    --link: #e8e4dc;
-  }
-}
+
 
 html {
   font-size: 19px;
