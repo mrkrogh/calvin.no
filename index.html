@@ -15,7 +15,6 @@
       <a href="index.html" class="site-name">Calvin Krogh</a>
     </header>
 
-    <!-- Kontaktskjema -->
     <section>
       <p class="section-intro">Vil du kontakte meg, kan du gjøre det her:</p>
 
@@ -34,14 +33,13 @@
         <textarea id="f-msg" rows="6" placeholder="Skriv her..."></textarea>
       </div>
 
-      <button id="send-btn" onclick="encryptAndSend()">Send</button>
+      <button id="send-btn" onclick="sendMessage()">Send</button>
 
       <p class="status" id="contact-status"></p>
     </section>
 
     <hr>
 
-    <!-- Nyhetsbrev -->
     <section class="newsletter">
       <p class="section-intro">Skal du ha nyhetsbrev når det faller meg inn å sende et, meld deg på her:</p>
       <div class="newsletter-row">
@@ -57,45 +55,12 @@
 
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/openpgp@5.11.2/dist/openpgp.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const ARMORED_PUBLIC_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-
-xsBNBFiPc0ABCADIjkqbVia5LzsOyI1bUdnRTaiSbc+qU2SOMR6+y/eCo3jk
-V9urs4pOEJXuDnstOU20wntJtxvza672TZbrzgd3JGZdu5zXRCmQ2gSZXqnl
-nNexzpAZ+YY5XTq6pQf0OU3CZBxpWZNxcJ4zJds5kuGekxCN1HnM8jgJQA1V
-+Ol8a69kxN1rBfHnMckx7Pqkb677YXAKoD+fEeqbpbmTQipIsExgEBiTlMiK
-vkxHWvoexj5X0SyRJLsyu9SHiR6+CIiuPtjQHCLDLBVrumohiMPlWLMAM2lw
-upWpoawh6YUVasuNhtOiEBewLgmAOc+NUkTgWi/l/uCJDwu8FytwH3i7ABEB
-AAHNI2NhbHZpbkBjYWx2aW4ubm8gPGNhbHZpbkBjYWx2aW4ubm8+wsB/BBAB
-CAApBQJY6T5FBgsJBwgDAgkQdb0+IhAi7GAEFQgKAgMWAgECGQECGwMCHgEA
-CgkQdb0+IhAi7GCwSgf/X+44ItnRNZbeiiMd0iaUf8pEXYI1BrTV//7PjEWT
-wbq0RbrO2sU0xTAEq6acitqbPWTvd+3GP4lj/QdtGrGqDW4ZtwjKOpF938ga
-WP8XrBoF0CMeb/V9170xt4jxRpkTpurlifbG59mx/3O5/qAWXdD6sLLgSTCZ
-OM/TVz1CPFBDot9c17LHYClpbVmdBsbALNrHKI+ezmFHOqSmy1L3TxIBqeBY
-vLjutz4nYrBJFDQASQjShdglgByJMMK+5/XUwPHxyxArQ/j7nVegrPQQMuMs
-uVzeqzlurysz4aU6w4QJD9X1BBAEqPaI+s/gP2YJe3ADcx/FKiMEbZ1gLsko
-z87ATQRYj3NAAQgAuYb1WruvWoq8xRHnQ+myXHfrah2fnD17O8SWRe5hiqmy
-rsBGMFV9Ev6P+CVawvZDcGgiSjFQ0wjI9nzn6c3qUk79uba4dnWpzKfgRwKJ
-uJYpX6rwLsqsYPyYRGujAz1oi10khV+SbOduukEMaewv8djBWX92r4D7Nnk6
-RZ6aikwXwtp02gMe0yLsrRE0kli0kuKZuOcDvIIbaeecDtjSrjJGUq7wDZdM
-vkevGspxzIuWex0caXQnpaCLtZSCm4i463jNpI1OPmlaGtaSrN4tkgYnz6/Q
-SJdQbG73N1ZAyCecJlK3buc618BQnkTiHS2kNgbZjfNQazy2U0J1LGKfBQAR
-AQABwsBpBBgBCAATBQJY6T5FCRB1vT4iECLsYAIbDAAKCRB1vT4iECLsYLpR
-CADE8MPmAzJj2ZLdJQxleDabrZHwL7yJZ6hsjRAlJPdeNVp4uZQiSZzMcYbe
-GxYCSw8adq6EztR0uMYH83lFNH1gB/YHikQp5QI7P67WhzLsCi+tE7XZj9Gy
-kzMOTZmzlKe1Xw3Ro0n3JVZNyLygJqTtnn9YcFLWuzTrww/fKWN3x6slmTLb
-m9JDy5SVzRStDc/mqB5u8tWKbT+T2VrGcIgV/tJJ5a/KiaVPZHtuOE5oLXf7
-06EFuFu/iZND9nKRFvoXHAXJMUIFnPcvKNmLGvh2QMFr/wQz9QLYGhqSHHM8
-wZATKRQiYw6aaOfTRgOJqfixF1aCqX+g1wIwtA0M2e90
-=NTMo
------END PGP PUBLIC KEY BLOCK-----`;
-
     const WEB3FORMS_KEY = '6534d69a-e649-4d6c-8542-20dcd91f0bff';
 
-    async function encryptAndSend() {
+    async function sendMessage() {
       const name = document.getElementById('f-name').value.trim();
       const email = document.getElementById('f-email').value.trim();
       const msg = document.getElementById('f-msg').value.trim();
@@ -111,18 +76,12 @@ wZATKRQiYw6aaOfTRgOJqfixF1aCqX+g1wIwtA0M2e90
       btn.disabled = true;
 
       try {
-        const publicKey = await openpgp.readKey({ armoredKey: ARMORED_PUBLIC_KEY });
-        const plaintext = `Fra: ${name} <${email}>\nDato: ${new Date().toLocaleString('nb-NO')}\n\n${msg}`;
-        const encrypted = await openpgp.encrypt({
-          message: await openpgp.createMessage({ text: plaintext }),
-          encryptionKeys: publicKey,
-        });
-
         const formData = new FormData();
         formData.append('access_key', WEB3FORMS_KEY);
         formData.append('subject', 'Ny melding fra calvin.no');
-        formData.append('message', encrypted);
-        formData.append('from_name', 'calvin.no kontaktskjema');
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('message', msg);
         formData.append('botcheck', '');
 
         const response = await fetch('https://api.web3forms.com/submit', {
@@ -198,4 +157,3 @@ wZATKRQiYw6aaOfTRgOJqfixF1aCqX+g1wIwtA0M2e90
 
 </body>
 </html>
-
