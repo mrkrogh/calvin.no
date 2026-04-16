@@ -34,8 +34,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #e8e4dc;
-    --text-muted: #888;
-    --border: #3a3632;
+    --text-muted: #999;
+    --border: #4a4642;
     --bg: #161412;
     --link: #e8e4dc;
   }
@@ -204,10 +204,10 @@ hr {
 
 .btn-filled {
   font-family: 'Crimson Text', Georgia, serif;
-  font-size: 17px;
+  font-size: 16px;
   background: var(--text);
   border: 0.5px solid var(--text);
-  padding: 8px 20px;
+  padding: 7px 22px;
   cursor: pointer;
   color: var(--bg);
   letter-spacing: 0.03em;
@@ -259,6 +259,7 @@ input[type="email"] {
   background: transparent;
   outline: none;
   border-radius: 0;
+  -webkit-text-fill-color: var(--text);
 }
 
 input[type="text"]:focus,
@@ -278,6 +279,7 @@ textarea {
   resize: vertical;
   min-height: 140px;
   border-radius: 0;
+  -webkit-text-fill-color: var(--text);
 }
 
 textarea:focus {
@@ -286,18 +288,17 @@ textarea:focus {
 
 button {
   font-family: 'Crimson Text', Georgia, serif;
-  font-size: 17px;
+  font-size: 16px;
   background: transparent;
-  border: 0.5px solid var(--text);
-  padding: 8px 24px;
+  border: 0.5px solid var(--border);
+  padding: 7px 22px;
   cursor: pointer;
   color: var(--text);
   letter-spacing: 0.03em;
 }
 
 button:hover {
-  background: var(--text);
-  color: var(--bg);
+  border-color: var(--text);
 }
 
 /* Status messages */
