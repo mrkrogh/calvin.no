@@ -24,10 +24,12 @@
 
     <section class="newsletter">
       <p>Skal du ha nyhetsbrev når det faller meg inn å sende et, meld deg på her:</p>
-      <div class="newsletter-row">
-        <input type="email" id="nl-email" placeholder="din@epost.no">
-        <button class="btn-filled" onclick="subscribeNewsletter()">Meld meg på</button>
-      </div>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/calvinkrogh" method="post">
+        <div class="newsletter-row">
+          <input type="email" name="email" id="bd-email" placeholder="din@epost.no">
+          <button type="submit">Meld meg på</button>
+        </div>
+      </form>
       <p class="status" id="nl-status"></p>
     </section>
 
@@ -39,55 +41,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const WEB3FORMS_KEY = '6534d69a-e649-4d6c-8542-20dcd91f0bff';
-
-    async function subscribeNewsletter() {
-      const email = document.getElementById('nl-email').value.trim();
-      const statusEl = document.getElementById('nl-status');
-
-      if (!email) {
-        showStatus(statusEl, 'Skriv inn e-postadressen din.');
-        return;
-      }
-
-      const btn = document.querySelector('.btn-filled');
-      btn.textContent = 'Sender…';
-      btn.disabled = true;
-
-      try {
-        const formData = new FormData();
-        formData.append('access_key', WEB3FORMS_KEY);
-        formData.append('subject', 'Ny nyhetsbrevpåmelding fra calvin.no');
-        formData.append('message', `Ny påmelding: ${email}`);
-        formData.append('from_name', 'calvin.no nyhetsbrev');
-        formData.append('botcheck', '');
-
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          showStatus(statusEl, 'Du er meldt på.');
-          document.getElementById('nl-email').value = '';
-        } else {
-          showStatus(statusEl, 'Noe gikk galt. Prøv igjen.');
-        }
-      } catch(e) {
-        showStatus(statusEl, 'Feil: ' + e.message);
-      } finally {
-        btn.textContent = 'Meld meg på';
-        btn.disabled = false;
-      }
-    }
-
-    function showStatus(el, msg) {
-      el.textContent = msg;
-      el.style.display = 'block';
-    }
   </script>
 
 </body>
