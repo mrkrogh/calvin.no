@@ -170,10 +170,9 @@ hr {
 
 /* Section text */
 section p {
-  font-size: 16px;
-  color: var(--text-muted);
-  font-style: italic;
-  line-height: 1.7;
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.85;
 }
 
 /* Newsletter */
