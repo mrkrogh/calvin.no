@@ -28,10 +28,7 @@
   --text-muted: #888;
   --border: #c8c4bc;
   --bg: #ffffff;
-  --link: #1a1a1a;
 }
-
-
 
 html {
   font-size: 19px;
@@ -142,9 +139,9 @@ blockquote cite {
   font-style: normal;
 }
 
-/* Links in body text */
-article a {
-  color: var(--link);
+/* Links */
+article a, section a {
+  color: var(--text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -171,12 +168,11 @@ hr {
   margin: 3rem 0;
 }
 
-/* Section intro text */
-.section-intro {
+/* Section text */
+section p {
   font-size: 16px;
   color: var(--text-muted);
   font-style: italic;
-  margin-bottom: 1.5rem;
   line-height: 1.7;
 }
 
@@ -188,60 +184,11 @@ hr {
 .newsletter-row {
   display: flex;
   gap: 8px;
+  margin-top: 1rem;
 }
 
 .newsletter-row input {
   flex: 1;
-}
-
-.btn-filled {
-  font-family: 'Crimson Text', Georgia, serif;
-  font-size: 16px;
-  background: var(--text);
-  border: 0.5px solid var(--text);
-  padding: 7px 22px;
-  cursor: pointer;
-  color: var(--bg);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-
-.btn-filled:hover {
-  opacity: 0.85;
-}
-
-/* Footer */
-footer {
-  border-top: 0.5px solid var(--border);
-  margin-top: 3rem;
-  padding: 1.5rem 0;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-/* Contact form */
-.contact-intro {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-style: italic;
-  margin-bottom: 1.5rem;
-}
-
-.field {
-  margin-bottom: 1.4rem;
-}
-
-label {
-  display: block;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-  font-style: italic;
-}
-
-input[type="text"],
-input[type="email"] {
-  width: 100%;
   border: none;
   border-bottom: 0.5px solid var(--border);
   padding: 6px 0;
@@ -251,34 +198,13 @@ input[type="email"] {
   background: transparent;
   outline: none;
   border-radius: 0;
-  -webkit-text-fill-color: var(--text);
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus {
+.newsletter-row input:focus {
   border-bottom-color: var(--text);
 }
 
-textarea {
-  width: 100%;
-  border: 0.5px solid var(--border);
-  padding: 10px;
-  font-family: 'Crimson Text', Georgia, serif;
-  font-size: 18px;
-  color: var(--text);
-  background: transparent;
-  outline: none;
-  resize: vertical;
-  min-height: 140px;
-  border-radius: 0;
-  -webkit-text-fill-color: var(--text);
-}
-
-textarea:focus {
-  border-color: var(--text);
-}
-
-button {
+.newsletter-row button {
   font-family: 'Crimson Text', Georgia, serif;
   font-size: 16px;
   background: transparent;
@@ -287,13 +213,14 @@ button {
   cursor: pointer;
   color: var(--text);
   letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
-button:hover {
+.newsletter-row button:hover {
   border-color: var(--text);
 }
 
-/* Status messages */
+/* Status */
 .status {
   margin-top: 1rem;
   font-size: 15px;
@@ -302,39 +229,11 @@ button:hover {
   display: none;
 }
 
-/* Encrypted output */
-.encrypted-output {
-  display: none;
-  margin-top: 1.5rem;
-}
-
-.encrypted-output p {
+/* Footer */
+footer {
+  border-top: 0.5px solid var(--border);
+  margin-top: 3rem;
+  padding: 1.5rem 0;
   font-size: 13px;
   color: var(--text-muted);
-  font-style: italic;
-  margin-bottom: 8px;
-}
-
-.encrypted-output textarea {
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  min-height: 120px;
-}
-
-.btn-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-/* Key status */
-.key-status {
-  font-size: 13px;
-  font-style: italic;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.key-status.loaded {
-  color: var(--text);
 }
